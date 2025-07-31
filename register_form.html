@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Form with Events</title>
+</head>
+<body>
+
+  <h2>Student Registration Form</h2>
+
+  <form id="studentForm">
+    Name: <input type="text" id="name"><br><br>
+    Email: <input type="email" id="email"><br><br>
+    <button type="submit">Register</button>
+  </form>
+
+  <p id="status"></p>
+
+  <script>
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const form = document.getElementById("studentForm");
+    const status = document.getElementById("status");
+
+    // 1. Focus event
+    nameInput.addEventListener("focus", () => {
+      status.innerText = "You're typing your name...";
+    });
+
+    // 2. Blur event
+    emailInput.addEventListener("blur", () => {
+      status.innerText = "You left the email field.";
+    });
+
+    // 3. Input event
+    nameInput.addEventListener("input", () => {
+      status.innerText = "Typing: " + nameInput.value;
+    });
+
+    // 4. Change event
+    emailInput.addEventListener("change", () => {
+      status.innerText = "Email changed to: " + emailInput.value;
+    });
+
+    // 5. Submit event
+    form.addEventListener("submit", (e) => {
+      e.preventDefault(); // Stop page from reloading
+      status.innerText = "Form submitted. Thank you!";
+    });
+  </script>
+
+</body>
+</html>
